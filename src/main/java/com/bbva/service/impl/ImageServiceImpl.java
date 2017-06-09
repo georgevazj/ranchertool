@@ -8,6 +8,7 @@ import com.bbva.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,16 +39,26 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public ImageModel findImageById(int id) {
-        return null;
+        Image image = imageRepository.findImageById(id);
+        return imageConverter.entity2model(image);
     }
 
     @Override
     public List<ImageModel> listAllImages() {
-        return null;
+        List<Image> images = imageRepository.findAll();
+        List<ImageModel> imageModels = new ArrayList<ImageModel>();
+
+        for (Image image:images){
+            imageModels.add(imageConverter.entity2model(image));
+        }
+        return imageModels;
     }
 
     @Override
     public void removeImage(int id) {
-
+        Image image = imageConverter.model2entity(findImageById(id));
+        if (image != null){
+            imageRepository.delete(image);
+        }
     }
 }

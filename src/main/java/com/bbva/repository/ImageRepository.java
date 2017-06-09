@@ -10,6 +10,7 @@ import java.io.Serializable;
  */
 public interface ImageRepository extends JpaRepository<Image, Serializable> {
 
+    public abstract Image findImageById(int id);
     public abstract Image findImageByName(String name);
 
 }
