@@ -1,7 +1,9 @@
 package com.bbva.service.impl;
 
 import com.bbva.entity.Uuaa;
+import com.bbva.repository.UuaaRepository;
 import com.bbva.service.UuaaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,23 +15,26 @@ import java.util.List;
 @Service
 public class UuaaServiceImpl implements UuaaService {
 
+    @Autowired
+    private UuaaRepository uuaaRepository;
+
     @Override
     public Uuaa addUuaa(Uuaa uuaa) {
-        return null;
+        return uuaaRepository.save(uuaa);
     }
 
     @Override
     public List<Uuaa> listAllUuaa() {
-        return null;
+        return uuaaRepository.findAll();
     }
 
     @Override
     public Uuaa findUuaaByName(String uuaa) {
-        return null;
+        return uuaaRepository.findOne(uuaa);
     }
 
     @Override
     public void removeUuaa(String uuaa) {
-
+        uuaaRepository.delete(findUuaaByName(uuaa));
     }
 }
