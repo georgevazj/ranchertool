@@ -1,6 +1,5 @@
 package com.bbva.service;
 
-import com.bbva.entity.Image;
 import com.bbva.model.ImageModel;
 
 import java.util.List;
