@@ -6,6 +6,7 @@ package com.bbva.constant;
 public class ViewConstant {
 
     public static final String INDEX = "index";
+    public static final String LOGIN = "login";
 
 
 }
