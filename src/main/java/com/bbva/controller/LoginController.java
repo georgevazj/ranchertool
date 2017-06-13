@@ -32,7 +32,7 @@ public class LoginController {
     public String loginCheck(){
         LOG.info("METHOD: loginSuccess()");
         LOG.info("Login succeeded! Heading to contacts view...");
-        return "redirect:/";
+        return "redirect:/tool/home";
     }
 
 }
