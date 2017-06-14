@@ -33,6 +33,10 @@ public class UserService implements UserDetailsService {
         return buildUser(user,authorities);
     }
 
+    public com.bbva.entity.User addUser(com.bbva.entity.User newUser){
+        return userRepository.save(newUser);
+    }
+
     private User buildUser(com.bbva.entity.User user, List<GrantedAuthority> authorities){
         return new User(user.getUsername(), user.getPassword(),user.isEnabled(), true, true, true, authorities);
     }
