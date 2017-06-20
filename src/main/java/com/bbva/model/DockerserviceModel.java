@@ -1,54 +1,30 @@
-package com.bbva.entity;
+package com.bbva.model;
 
-import javax.persistence.*;
+import com.bbva.entity.Image;
 
 /**
- * Created by Jorge on 19/6/17.
+ * Created by Jorge on 20/6/17.
  */
+public class DockerserviceModel {
 
-@Entity
-@Table(name = "services")
-public class Service {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "id_service", unique = true, nullable = false)
-    private int id;
-
-    @Column(name = "servicename", length = 100, nullable = false)
     private String servicename;
-
-    @Column(name = "entrypoint", length = 255)
     private String entrypoint;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_image", nullable = false)
     private Image image;
-
-    @Column(name = "stdin")
     private boolean stdin_open;
-
-    @Column(name = "tty")
     private boolean tty;
-
-    @Column(name = "workingdir")
     private String workingdir;
 
 
-    public Service() {
+    public DockerserviceModel() {
     }
 
-    public Service(String servicename, String entrypoint, Image image, boolean stdin_open, boolean tty, String workingdir) {
+    public DockerserviceModel(String servicename, String entrypoint, Image image, boolean stdin_open, boolean tty, String workingdir) {
         this.servicename = servicename;
         this.entrypoint = entrypoint;
         this.image = image;
         this.stdin_open = stdin_open;
         this.tty = tty;
         this.workingdir = workingdir;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getServicename() {
@@ -101,9 +77,8 @@ public class Service {
 
     @Override
     public String toString() {
-        return "Service{" +
-                "id=" + id +
-                ", servicename='" + servicename + '\'' +
+        return "DockerserviceModel{" +
+                "servicename='" + servicename + '\'' +
                 ", entrypoint='" + entrypoint + '\'' +
                 ", image=" + image +
                 ", stdin_open=" + stdin_open +
